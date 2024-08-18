@@ -1,12 +1,12 @@
-export default function FlipAnimate(
-    elementList,
-    options = {
-        duration: 600,
-        easing: "ease",
-    }
-) {
+export default function FlipAnimate(elementList, options = {}) {
     this.elements = Array.from(elementList);
-    this.options = options;
+    this.options = {
+        ...{
+            duration: 600,
+            easing: "ease",
+        },
+        ...options,
+    };
     this.firstPosition = [];
     this.lastPosition = [];
     this.first();
@@ -34,11 +34,14 @@ FlipAnimate.prototype.invert = function () {
             top: first.top - last.top,
             width: first.width - last.width,
             height: first.height - last.height,
+            duration: Math.ceil(
+                ((2 * index) / this.firstPosition.length) * 1000
+            ),
         };
     });
 
     this.elements.forEach((ele, index) => {
-        const { left, top, width, height } = diff[index];
+        const { left, top, width, height, duration } = diff[index];
         ele.animate(
             [
                 {
@@ -48,6 +51,7 @@ FlipAnimate.prototype.invert = function () {
             ],
             {
                 ...this.options,
+                ...duration,
             }
         );
     });
