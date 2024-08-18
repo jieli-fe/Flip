@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .container .cardBox {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background-color: #c0c0c0;
+            padding: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        .container .newCardbox {
+            background-color: sandybrown;
+        }
+
+        .container .cardBox span {
+            position: absolute;
+            padding: 3px 5px;
+            background: #fff;
+            font-size: 12px;
+            right: 10px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <button id="add">添加卡片</button>
+
+    <script type="module">
+        import FlipAnimate from './index.js'
+        const container = document.querySelector('.container');
+        const add = document.getElementById('add');
+        let count = 0;
+
+        for (let i = 0; i < 10; i++) {
+            const el = document.createElement('div');
+            el.classList.add('cardBox');
+            el.textContent = `卡片${i + 1}`;
+            const span = document.createElement('span');
+            span.textContent = '删除';
+            span.onclick = deleteCard
+            el.appendChild(span);
+            container.appendChild(el);
+
+        }
+
+        add.onclick = function () {
+            const animate = new FlipAnimate(container.querySelectorAll('.cardBox'));
+            const el = document.createElement('div');
+            el.classList.add('cardBox', 'newCardbox');
+            el.textContent = `新增卡片${++count}`;
+            const span = document.createElement('span');
+            span.textContent = '删除';
+            span.onclick = function () {
+                this.parentNode.remove();
+            }
+            el.appendChild(span);
+            container.firstChild ? container.insertBefore(el, container.firstChild) : container.appendChild(el);
+            animate.play()
+        }
+        function deleteCard(e) {
+            const animate = new FlipAnimate(container.querySelectorAll('.cardBox'));
+            e.target.parentNode.remove();
+            animate.play()
+        }
+    </script>
+</body>
+
+</html>
