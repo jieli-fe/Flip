@@ -1,6 +1,6 @@
 {
     "name": "@jielife/Flip",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "简易Flip动画库",
     "type": "module",
     "main": "index.js",
