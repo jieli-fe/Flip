@@ -1,13 +1,21 @@
 {
-    "name": "@jielife/Flip",
-    "version": "1.0.1",
-    "description": "简易Flip动画库",
-    "type": "module",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "@jielife/flip",
+  "version": "1.0.1",
+  "description": "简易Flip动画库",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jieli-fe/Flip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jieli-fe/Flip/issues"
+  },
+  "homepage": "https://github.com/jieli-fe/Flip#readme"
 }

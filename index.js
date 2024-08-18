@@ -10,8 +10,6 @@ export default function FlipAnimate(
     this.firstPosition = [];
     this.lastPosition = [];
     this.first();
-    this.destroy();
-    console.log("this.elements", this.elements);
 }
 FlipAnimate.prototype.play = function () {
     this.last();
@@ -19,12 +17,10 @@ FlipAnimate.prototype.play = function () {
 };
 FlipAnimate.prototype.first = function () {
     this.firstPosition = this.getPosition();
-    console.log("first position", this.firstPosition);
 };
 
 FlipAnimate.prototype.last = function () {
     this.lastPosition = this.getPosition();
-    console.log("last position", this.lastPosition);
 };
 
 FlipAnimate.prototype.getPosition = function () {
@@ -40,7 +36,6 @@ FlipAnimate.prototype.invert = function () {
             height: first.height - last.height,
         };
     });
-    console.log("diff", diff);
 
     this.elements.forEach((ele, index) => {
         const { left, top, width, height } = diff[index];
