@@ -16,3 +16,7 @@ const animate = new FlipAnimate(document.querySelectorAll(".cardBox"));
 ```js
 animate.play();
 ```
+
+## 预览地址:
+
+https://jieli-fe.github.io/Flip/
