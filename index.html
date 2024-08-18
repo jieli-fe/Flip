@@ -43,13 +43,67 @@
             right: 10px;
             bottom: 10px;
         }
+
+        .demo2 {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .flipList {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .flipCard {
+            margin-left: 10px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .flipCard:nth-child(1) {
+            background: #d69a46;
+        }
+
+        .flipCard:nth-child(2) {
+            background: #d69a46;
+        }
+
+        .flipCard:nth-child(3) {
+            background: #d69a46;
+        }
+
+        .direction {
+            flex-direction: column;
+        }
     </style>
 </head>
 
 <body>
     <div class="container"></div>
     <button id="add">添加卡片</button>
+    <hr>
 
+    <div class="demo2">
+        <div class="flipList">
+            <div class="flipCard">
+                这里是测试数据1,这里是测试数据1这里是测试数据1这里是测试数据1这里是测试数据1
+
+            </div>
+
+            <div class="flipCard">
+                这里是测试数据2
+                这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2
+            </div>
+
+            <div class="flipCard">
+                这里是测试数据3
+                这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2这里是测试数据2
+            </div>
+        </div>
+        <button id="btn2">切换demo2动画</button>
+    </div>
     <script type="module">
         import FlipAnimate from './index.js'
         const container = document.querySelector('.container');
@@ -85,6 +139,16 @@
         function deleteCard(e) {
             const animate = new FlipAnimate(container.querySelectorAll('.cardBox'));
             e.target.parentNode.remove();
+            animate.play()
+        }
+
+
+        const btn2 = document.getElementById('btn2');
+        btn2.onclick = function () {
+            const flipCards = document.querySelectorAll('.flipCard');
+            const animate = new FlipAnimate(flipCards);
+            const flipList = document.querySelector('.flipList');
+            flipList.classList.toggle('direction');
             animate.play()
         }
     </script>
